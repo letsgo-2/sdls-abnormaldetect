@@ -1,0 +1,51 @@
+{
+    "anomaly_types": [
+      "Missing",
+      "Inoperable Object",
+      "Transformer Failure",
+      "Unfulfilled Object",
+      "Environmental Disturbance",
+      "Normal"
+    ],
+    "object_list": [
+      "mobile robot platform",
+      "material station",
+      "mobile robot arm",
+      "fixed robot arm",
+      "mobile robot",
+      "fixed robot",
+      "camera",
+      "with camera",
+      "capping device",
+      "shaking device",
+      "silicone container",
+      "pigment container",
+      "test tube rack 1",
+      "test tube rack 2",
+      "test tube",
+      "test tube cap",
+      "mold",
+      "mold brush",
+      "scale",
+      "tray",
+      "workbench",
+      "vacuum drying oven"
+    ],
+    "views": [
+      { "name": "top-down view", "label": "TD" },
+      { "name": "left-down view", "label": "LD" },
+      { "name": "front-down view", "label": "FD" },
+      { "name": "right-down view", "label": "RD" },
+      { "name": "left-horizontal view", "label": "LH" },
+      { "name": "front-horizontal view", "label": "FH" },
+      { "name": "right-horizontal view", "label": "RH" },
+      { "name": "left-up view", "label": "LU" },
+      { "name": "front-up view", "label": "FU" },
+      { "name": "right-up view", "label": "RU" },
+      { "name": "left 90° downward view", "label": "L90D" },
+      { "name": "right 90° downward view", "label": "R90D" },
+      { "name": "left 90° horizontal view", "label": "L90H" },
+      { "name": "right 90° horizontal view", "label": "R90H" }
+    ]
+  }
+  

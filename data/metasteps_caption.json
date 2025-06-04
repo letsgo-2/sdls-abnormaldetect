@@ -1,0 +1,883 @@
+{
+  "step1": {
+    "operator": "mobile robot arm",
+    "obj": "silicone container",
+    "start_position": "material station (wlt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot arm to move the two silicone container from material station (wlt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "material station (wlt)",
+    "preCheckContent": "Check whether two silicone containers are placed on material station (wlt) in the following order: a green-marked silicone container on the left, immediately followed by a blue-marked silicone container.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On material station (wlt), the first on the left is a green-marked silicone container, followed by one blue-marked silicone container.", "caption": "Green‑marked container on the left and blue‑marked container on the right at the material station."},
+            {"description": "On material station (wlt), the first on the left is a green-marked silicone container, followed by one blue-marked silicone container; any additional silicone containers' marking colors are irrelevant.", "caption": "Green‑marked container on the left and blue‑marked container next, additional containers’ colors don’t matter."}
+        ],
+        "abnormal": [
+            {"description": "On material station (wlt), the first on the left is a blue‑marked silicone container, followed by one green‑marked silicone container.", "type": "Inoperable Object", "caption": "Blue‑marked container on the left and green‑marked on the right."},
+            {"description": "On material station (wlt), the first on the left is a green‑marked silicone container, followed by one red‑marked silicone container.", "type": "Inoperable Object", "caption": "Green‑marked container on the left and red‑marked on the right."},
+            {"description": "On material station (wlt), only one green‑marked silicone container is present.", "type": "Missing", "caption": "Only a single green‑marked silicone container is present."},
+            {"description": "On material station (wlt), no silicone container is present.", "type": "Missing", "caption": "No silicone containers are present on the material station."},
+            {"description": "On material station (wlt), a silicone container is tipped over.", "type": "Inoperable Object", "caption": "A silicone container is tipped over on the material station."}
+        ]     
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "mobile robot platform (rob_p)",
+    "postCheckContent": "Check whether two silicone containers are present on mobile robot platform (rob_p).",
+    "postCheckRes":{
+        "normal": [
+            { "description": "On mobile robot platform (rob_p), two green-marked silicone containers are present.", "caption": "Two green‑marked silicone containers sit on the mobile robot platform (rob_p)." }
+        ],
+        "abnormal": [
+            { "description": "On mobile robot platform (rob_p), only one silicone container is present.", "type": "Transformer Failure", "caption": "Only one silicone container is on the mobile robot platform (rob_p)." },
+            { "description": "On mobile robot platform (rob_p), no silicone container is present.", "type": "Transformer Failure", "caption": "No silicone container is on the mobile robot platform (rob_p)." },
+            { "description": "On mobile robot platform (rob_p), a silicone container is tipped over.", "type": "Unfulfilled Object", "caption": "A silicone container lies tipped over on the mobile robot platform (rob_p)." }
+        ]
+    }
+  },
+  "step2": {
+    "operator": "mobile robot arm",
+    "obj": "pigment container",
+    "start_position": "material station (wlt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot arm to move the pigment container from material station (wlt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "material station (wlt)",
+    "preCheckContent": "Check whether the pigment container is on material station (wlt).",
+    "preCheckRes": {
+        "normal": [
+            { "description": "On material station (wlt), there is one green pigment container.", "caption": "A single green pigment container sits on the material station (wlt)." }
+        ],
+        "abnormal": [
+            { "description": "On material station (wlt), no pigment container is present.", "type": "Missing", "caption": "No pigment container is present on the material station (wlt)." },
+            { "description": "On material station (wlt), the green pigment container is tipped over.", "type": "Inoperable Object", "caption": "The green pigment container is tipped over on the material station (wlt)." }
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "mobile robot platform (rob_p)",
+    "postCheckContent": "Check whether the pigment container is on mobile robot platform (rob_p).",
+    "postCheckRes": {
+        "normal": [
+            { "description": "On mobile robot platform (rob_p), the pigment container is present.", "caption": "A pigment container sits on the mobile robot platform (rob_p)." }
+        ],
+        "abnormal": [
+            { "description": "On mobile robot platform (rob_p), no pigment container is present.", "type": "Transformer Failure", "caption": "No pigment container is on the mobile robot platform (rob_p)." },
+            { "description": "On mobile robot platform (rob_p), the pigment container is tipped over.", "type": "Unfulfilled Object", "caption": "The pigment container is tipped over on the mobile robot platform (rob_p)." }
+        ]
+    }
+  },
+  "step3": {
+    "operator": "mobile robot",
+    "obj": "mold",
+    "start_position": "material station (wlt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot to move the mold from material station (wlt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "material station (wlt)",
+    "preCheckContent": "Check whether the mold is on material station (wlt).",
+    "preCheckRes": {
+        "normal": [
+            { "description": "On material station (wlt), a mold is present.", "caption": "A mold is sitting on the material station (wlt)." }
+        ],
+        "abnormal": [
+            { "description": "On material station (wlt), no mold is present.", "type": "Missing", "caption": "No mold is present on the material station (wlt)." }
+        ]   
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "mobile robot platform (rob_p)",
+    "postCheckContent": "Check whether the mold is on mobile robot platform (rob_p).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On mobile robot platform (rob_p), a mold is present.", "caption": "A mold is sitting on the mobile robot platform (rob_p)."}
+        ],
+        "abnormal": [
+            {"description": "On mobile robot platform (rob_p), no mold is present.", "type": "Transformer Failure", "caption": "No mold is present on the mobile robot platform (rob_p)."}
+        ]
+    }
+  },
+  "step4": {
+    "operator": "mobile robot arm",
+    "obj": "silicone container",
+    "start_position": "mobile robot platform (rob_p)",
+    "dest_position": "workbench (czt)",
+    "subtask": "Use the mobile robot arm to move the silicone container from mobile robot platform (rob_p) to workbench (czt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "mobile robot platform (rob_p)",
+    "preCheckContent": "Check whether the two silicone container is on mobile robot platform (rob_p).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On mobile robot platform (rob_p), two green-marked silicone containers are present.", "caption": "Two green‑marked silicone containers on the mobile robot platform (rob_p)."}
+        ],
+        "abnormal": [
+            {"description": "On mobile robot platform (rob_p), only one silicone container is present.", "type": "Missing", "caption": "Only one silicone container on the mobile robot platform (rob_p)."},
+            {"description": "On mobile robot platform (rob_p), no silicone container is present.", "type": "Missing", "caption": "No silicone container on the mobile robot platform (rob_p)."},
+            {"description": "On mobile robot platform (rob_p), a silicone container is tipped over.", "type": "Inoperable Object", "caption": "A silicone container tipped over on the mobile robot platform (rob_p)."}
+        ]    
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm",
+    "postCheckLocation": "workbench (czt)",
+    "postCheckContent": "Check whether the two silicone container is on workbench (czt).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), two silicone containers are present.", "caption": "Two silicone containers sit on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no silicone container is present.", "type": "Transformer Failure", "caption": "No silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), only one silicone container is present.", "type": "Transformer Failure", "caption": "Only one silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), a silicone container is tipped over.", "type": "Unfulfilled Object", "caption": "A silicone container is tipped over on the workbench (czt)."}
+        ]
+    }
+  },
+  "step5": {
+    "operator": "mobile robot arm",
+    "obj": "pigment container",
+    "start_position": "mobile robot platform (rob_p)",
+    "dest_position": "workbench (czt)",
+    "subtask": "Use the mobile robot arm to move the two pigment container from mobile robot platform (rob_p) to workbench (czt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "mobile robot platform (rob_p)",
+    "preCheckContent": "Check whether the pigment container is on mobile robot platform (rob_p).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On mobile robot platform (rob_p), a pigment container is present.", "caption": "A pigment container sits on the mobile robot platform (rob_p)."}
+        ],
+        "abnormal": [
+            {"description": "On mobile robot platform (rob_p), no pigment container is present.", "type": "Missing", "caption": "No pigment container on the mobile robot platform (rob_p)."},
+            {"description": "On mobile robot platform (rob_p), the pigment container is tipped over.", "type": "Inoperable Object", "caption": "The pigment container is tipped over on the mobile robot platform (rob_p)."}
+        ]   
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "workbench (czt)",
+    "postCheckContent": "Check whether the pigment container is on workbench (czt).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a pigment container is present.", "caption": "A pigment container sits on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no pigment container is present.", "type": "Transformer Failure", "caption": "No pigment container on the workbench (czt)."},
+            {"description": "On workbench (czt), the pigment container is tipped over.", "type": "Unfulfilled Object", "caption": "The pigment container is tipped over on the workbench (czt)."}
+        ]
+    }
+  },
+  "step6": {
+    "operator": "mobile robot arm",
+    "obj": "mold",
+    "start_position": "mobile robot platform (rob_p)",
+    "dest_position": "workbench (czt)",
+    "subtask": "Use the mobile robot arm to move the mold from mobile robot platform (rob_p) to workbench (czt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "mobile robot platform (rob_p)",
+    "preCheckContent": "Check whether a mold is on mobile robot platform (rob_p).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On mobile robot platform (rob_p), a mold is present.", "caption": "A mold sits on the mobile robot platform (rob_p)."}
+        ],
+        "abnormal": [
+            {"description": "On mobile robot platform (rob_p), no mold is present.", "type": "Missing", "caption": "No mold is present on the mobile robot platform (rob_p)."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm",
+    "postCheckLocation": "workbench (czt)",
+    "postCheckContent": "Check whether a mold is on workbench (czt).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a mold is present.", "caption": "A mold sits on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no mold is present.", "type": "Transformer Failure", "caption": "No mold is present on the workbench (czt)."}
+        ]    
+    }
+  },
+  "step7": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "test tube rack 1 (sgj1)",
+    "dest_position": "capping device (xn)",
+    "subtask": "Use the fixed robot arm to pick up the test tube from test tube rack 1 (sgj1) and move it to capping device (xn) to unscrew the cap.",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "test tube rack 1 (sgj1)",
+    "preCheckContent": "Check whether there is an empty capped test tube on test tube rack 1 (sgj1).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On test tube rack 1 (sgj1), there is one empty capped test tube.", "caption": "One empty capped test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is one empty capped test tube and one empty uncapped test tube.", "caption": "One empty capped and one empty uncapped test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is one empty capped test tube and one capped test tube containing colored fluid.", "caption": "An empty capped test tube and a colored-fluid test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is one empty capped test tube, one capped test tube containing colored fluid, and one empty uncapped test tube.", "caption": "Empty capped, colored-fluid, and empty uncapped test tubes on rack 1 (sgj1)."}
+        ],
+        "abnormal": [
+            {"description": "On test tube rack 1 (sgj1), no test tube is present.", "type": "Missing", "caption": "No test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is an empty uncapped test tube.", "type": "Inoperable Object", "caption": "An empty uncapped test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is one capped test tube containing colored fluid.", "type": "Inoperable Object", "caption": "A colored-fluid test tube on rack 1 (sgj1)."},
+            {"description": "On test tube rack 1 (sgj1), there is one empty uncapped test tube and one capped test tube containing colored fluid.", "type": "Inoperable Object", "caption": "Empty uncapped and colored-fluid test tubes on rack 1 (sgj1)."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "capping device (xn)",
+    "postCheckContent": "Check near capping device (xn) whether the test tube on the gripper has been uncapped.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "The test tube on the gripper is uncapped.", "caption": "An uncapped test tube held by the gripper."}
+        ],
+        "abnormal": [
+            {"description": "The test tube on the gripper still has a cap.", "type": "Unfulfilled Object", "caption": "A test tube with its cap still on the gripper."},
+            {"description": "No test tube is on the gripper.", "type": "Transformer Failure", "caption": "The gripper is empty with no test tube."}
+        ]
+    }
+  },
+  "step8": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "capping device (xn)",
+    "dest_position": "scale",
+    "subtask": "Use the fixed robot arm to move the test tube to scale.",
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "postCheckLocation": "scale",
+    "postCheckContent": "Check whether there is an uncapped test tube on scale.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On scale, there is one empty uncapped test tube.", "caption": "One empty uncapped test tube on the scale."},
+            {"description": "On scale, there is one empty uncapped test tube and one test tube containing colored liquid.", "caption": "An empty uncapped test tube and a colored-liquid test tube on the scale."}
+        ],
+        "abnormal": [
+            {"description": "On scale, no test tube is present.", "type": "Transformer Failure", "caption": "No test tube on the scale."},
+            {"description": "On scale, there is one capped empty test tube.", "type": "Transformer Failure", "caption": "One capped empty test tube on the scale."},
+            {"description": "On scale, there is one uncapped test tube containing colored liquid.", "type": "Unfulfilled Object", "caption": "An uncapped test tube with colored liquid on the scale."}
+        ]
+    }
+  },
+  "step9": {
+    "operator": "fixed robot arm",
+    "obj": "silicone container",
+    "start_position": "workbench (czt)",
+    "dest_position": "scale",
+    "subtask": "Use the fixed robot arm to pick up the two silicone container from workbench (czt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether two silicone containers are on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), two differently marked silicone containers are present.", "caption": "Two differently marked silicone containers on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no silicone container is present.", "type": "Missing", "caption": "No silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), only one silicone container is present.", "type": "Missing", "caption": "Only one silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), a silicone container is tipped over.", "type": "Inoperable Object", "caption": "A silicone container is tipped over on the workbench (czt)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+  "step10": {
+    "operator": "fixed robot arm",
+    "obj": "pigment container",
+    "start_position": "workbench (czt)",
+    "dest_position": "scale",
+    "subtask": "Use the fixed robot arm to pick up the pigment container from workbench (czt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether the pigment container is on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a pigment container is present.", "caption": "A pigment container on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no pigment container is present.", "type": "Missing", "caption": "No pigment container on the workbench (czt)."},
+            {"description": "On workbench (czt), the pigment container is tipped over.", "type": "Inoperable Object", "caption": "The pigment container is tipped over on the workbench (czt)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+  "step11": {
+    "operator": "fixed robot arm",
+    "obj": "test tube cap",
+    "start_position": "scale",
+    "dest_position": "capping device (xn)",
+    "subtask": "Use the fixed robot arm to pick up the test tube cap from scale and move it to capping device (xn) to put on the test tube cap.",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "scale",
+    "preCheckContent": "Check whether there is an uncapped test tube on scale.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On scale, there is only one empty uncapped test tube.", "caption": "Only one empty uncapped test tube on the scale."}
+        ],
+        "abnormal": [
+            {"description": "On scale, no test tube is present.", "type": "Missing", "caption": "No test tube on the scale."},
+            {"description": "On scale, there is one empty capped test tube.", "type": "Inoperable Object", "caption": "One empty capped test tube on the scale."},
+            {"description": "On scale, there is one capped test tube containing colored liquid.", "type": "Inoperable Object", "caption": "A capped test tube containing colored liquid on the scale."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "capping device (xn)",
+    "postCheckContent": "Check near capping device (xn) whether the gripper holds a test tube with its cap on.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "Near capping device (xn), the test tube on the gripper has its cap on.", "caption": "The test tube held by the gripper near the capping device (xn) is capped."}
+        ],
+        "abnormal": [
+            {"description": "Near capping device (xn), the test tube on the gripper has no cap.", "type": "Unfulfilled Object", "caption": "The test tube on the gripper near the capping device (xn) is uncapped."},
+            {"description": "Near capping device (xn), the gripper holds no test tube.", "type": "Transformer Failure", "caption": "The gripper near the capping device (xn) holds no test tube."}
+        ]
+    }
+  },
+  "step12": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "capping device (xn)",
+    "dest_position": "shaking device (yy)",
+    "subtask": "Use the fixed robot arm to move the test tube from capping device (xn) to shaking device (yy).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "capping device (xn)",
+    "preCheckContent": "Check near capping device (xn) whether the test tube on the gripper has its cap on.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "Near capping device (xn), the test tube on the gripper has its cap on.", "caption": "The test tube held by the gripper near the capping device (xn) is capped."}
+        ],
+        "abnormal": [
+            {"description": "Near capping device (xn), the test tube on the gripper has no cap.", "type": "Inoperable Object", "caption": "The test tube on the gripper near the capping device (xn) is uncapped."},
+            {"description": "Near capping device (xn), the gripper holds no test tube.", "type": "Missing", "caption": "The gripper near the capping device (xn) holds no test tube."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "postCheckLocation": "shaking device (yy)",
+    "postCheckContent": "Check whether there is a capped test tube on shaking device (yy).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On shaking device (yy), there is only one capped test tube containing transparent liquid.", "caption": "A single capped test tube with transparent liquid on the shaking device (yy)."}
+        ],
+        "abnormal": [
+            {"description": "On shaking device (yy), no test tube is present.", "type": "Transformer Failure", "caption": "No test tube on the shaking device (yy)."},
+            {"description": "On shaking device (yy), there is one test tube but it has no cap.", "type": "Transformer Failure", "caption": "A test tube without a cap on the shaking device (yy)."}
+        ]
+    }
+  },
+  "step13": {
+    "operator": "fixed robot arm",
+    "obj": "mold",
+    "start_position": "workbench (czt)",
+    "dest_position": "tray (tp)",
+    "subtask": "Use the fixed robot arm to pick up the mold from workbench (czt) and move it to tray (tp).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether a clean mold is on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a clean mold is present.", "caption": "A clean mold sits on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no mold is present.", "type": "Missing", "caption": "No mold is present on the workbench (czt)."},
+            {"description": "On workbench (czt), a mold is present but not clean.", "type": "Inoperable Object", "caption": "A mold on the workbench (czt) is dirty."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "postCheckLocation": "tray (tp)",
+    "postCheckContent": "Check whether the mold is at the center of tray (tp).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On tray (tp), a mold is at the center position.", "caption": "A mold sits at the center of the tray (tp)."}
+        ],
+        "abnormal": [
+            {"description": "On tray (tp), no mold is present.", "type": "Transformer Failure", "caption": "No mold is present on the tray (tp)."},
+            {"description": "On tray (tp), a mold is present but not at center.", "type": "Transformer Failure", "caption": "A mold is on the tray (tp) but off-center."},
+            {"description": "On tray (tp), a mold is present but tipped over.", "type": "Unfulfilled Object", "caption": "A mold on the tray (tp) is tipped over."}
+        ]
+    }
+  },
+
+  "step14": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "shaking device (yy)",
+    "dest_position": "capping device (xn)",
+    "subtask": "Use the fixed robot arm to pick up the test tube from shaking device (yy) and move it to capping device (xn) to unscrew the test tube cap.",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "shaking device (yy)",
+    "preCheckContent": "Check whether there is a capped test tube containing colored liquid on shaking device (yy).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On shaking device (yy), there is a capped test tube containing colored liquid.", "caption": "A capped test tube with colored liquid on the shaking device (yy)."}
+        ],
+        "abnormal": [
+            {"description": "On shaking device (yy), no test tube is present.", "type": "Missing", "caption": "No test tube on the shaking device (yy)."},
+            {"description": "On shaking device (yy), there is one uncapped test tube containing colored liquid.", "type": "Inoperable Object", "caption": "An uncapped test tube containing colored liquid on the shaking device (yy)."},
+            {"description": "On shaking device (yy), there is one capped test tube but containing transparent liquid.", "type": "Inoperable Object", "caption": "A capped test tube with transparent liquid on the shaking device (yy)."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "capping device (xn)",
+    "postCheckContent": "Check near capping device (xn) whether the test tube on the gripper is uncapped and contains colored liquid.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "Near capping device (xn), the gripper holds a test tube that is uncapped and contains colored liquid.", "caption": "An uncapped test tube with colored liquid held by the gripper near the capping device (xn)."}
+        ],
+        "abnormal": [
+            {"description": "Near capping device (xn), the gripper holds a test tube that is capped and contains colored liquid.", "type": "Unfulfilled Object", "caption": "A capped test tube with colored liquid held by the gripper near the capping device (xn)."},
+            {"description": "Near capping device (xn), no test tube is on the gripper.", "type": "Transformer Failure", "caption": "The gripper near the capping device (xn) holds no test tube."}
+        ]
+  
+    }
+  },
+
+  "step15": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "capping device (xn)",
+    "dest_position": "tray (tp)",
+    "subtask": "Use the fixed robot arm to pour the colored silicone mixture from the test tube into the mold at the center of tray (tp).",
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "postCheckLocation": "tray (tp)",
+    "postCheckContent": "Check whether the mold at the center of tray (tp) contains uniformly mixed silicone mixture.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On tray (tp) center, the mold contains uniformly mixed silicone mixture.", "caption": "A mold at the center of the tray (tp) filled with uniformly mixed silicone mixture."}
+        ],
+        "abnormal": [
+            {"description": "On tray (tp) center, the mold contains no liquid.", "type": "Transformer Failure", "caption": "A mold at the center of the tray (tp) with no liquid."},
+            {"description": "On tray (tp) center, the mold contains unevenly distributed liquid.", "type": "Unfulfilled Object", "caption": "A mold at the center of the tray (tp) with unevenly distributed liquid."}
+        ]
+    }
+  },
+  "step16": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "tray (tp)",
+    "dest_position": "capping device (xn)",
+    "subtask": "Use the fixed robot arm to pick up the test tube from tray (tp) and move it to capping device (xn) to screw on the test tube cap.",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "tray (tp)",
+    "preCheckContent": "Check near the tray (tp) whether the gripper holds a test tube containing colored liquid.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "The gripper holds a test tube containing colored liquid.", "caption": "A test tube with colored liquid held by the gripper."}
+        ],
+        "abnormal": [
+            {"description": "The gripper holds no test tube.", "type": "Missing", "caption": "The gripper is empty with no test tube."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "capping device (xn)",
+    "postCheckContent": "Check near capping device (xn) whether the test tube on the gripper has been screwed on.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "The gripper holds a capped test tube containing colored liquid.", "caption": "A capped test tube with colored liquid held by the gripper."}
+        ],
+        "abnormal": [
+            {"description": "The gripper holds a uncapped test tube containing colored liquid.", "type": "Unfulfilled Object", "caption": "An uncapped test tube with colored liquid held by the gripper."},
+            {"description": "The gripper holds no test tube.", "type": "Transformer Failure", "caption": "The gripper is empty with no test tube."}
+        ]   
+    }
+  },
+
+  "step17": {
+    "operator": "fixed robot arm",
+    "obj": "test tube",
+    "start_position": "capping device (xn)",
+    "dest_position": "test tube rack 2 (sgj2)",
+    "subtask": "Use the fixed robot arm to move the test tube from capping device (xn) to test tube rack 2 (sgj2).",
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm",
+    "postCheckLocation": "test tube rack 2 (sgj2)",
+    "postCheckContent": "Check whether there is a capped test tube containing colored liquid on test tube rack 2 (sgj2).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On test tube rack 2 (sgj2), there is one capped test tube containing colored liquid.", "caption": "A capped test tube with colored liquid on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), there is one capped test tube containing colored liquid and one empty uncapped test tube.", "caption": "A capped colored-liquid test tube and an empty uncapped test tube on rack 2 (sgj2)."}
+        ],
+        "abnormal": [
+            {"description": "On test tube rack 2 (sgj2), no test tube is present.", "type": "Transformer Failure", "caption": "No test tube on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), there is one uncapped test tube containing colored liquid.", "type": "Unfulfilled Object", "caption": "An uncapped test tube with colored liquid on rack 2 (sgj2)."}
+        ]
+    }
+  },
+
+  "step18": {
+    "operator": "fixed robot arm",
+    "obj": "mold brush",
+    "start_position": "tray (tp) side",
+    "dest_position": "tray (tp) center",
+    "subtask": "Use the fixed robot arm to pick up the mold brush to smooth the liquid on the mold.",
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "postCheckLocation": "tray (tp)",
+    "postCheckContent": "Check whether there is spilled liquid on tray (tp).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "No spilled liquid on tray (tp).", "caption": "No liquid spilled on the tray (tp)."},
+            {"description": "A small amount of liquid is spilled on tray (tp).", "caption": "A small amount of liquid spilled on the tray (tp)."}
+        ],
+        "abnormal": [
+            {"description": "A large amount of liquid is spilled on tray (tp).", "type": "Environmental Disturbance", "caption": "A large amount of liquid spilled on the tray (tp)."}
+        ]
+    }
+  },
+  "step19": {
+    "operator": "mobile robot arm",
+    "obj": "mold",
+    "start_position": "tray (tp) center",
+    "dest_position": "vacuum drying oven (gzx)",
+    "subtask": "Use the mobile robot arm to move the mold from tray (tp) center to vacuum drying oven (gzx).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm  (with camera)",
+    "preCheckLocation": "tray (tp)",
+    "preCheckContent": "Check whether the mold is correctly placed at tray (tp) center and contains colored liquid.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On tray (tp) center, the mold contains uniformly mixed silicone liquid.", "caption": "A mold at the center of the tray (tp) with uniformly mixed silicone liquid."},
+            {"description": "On tray (tp) center, the mold contains uniformly mixed silicone liquid and there is a small spill on tray (tp).", "caption": "A mold at the center of the tray (tp) with uniform silicone liquid and a small spill on the tray."}
+        ],
+        "abnormal": [
+            {"description": "On tray (tp), no mold is present.", "type": "Missing", "caption": "No mold is present on the tray (tp)."},
+            {"description": "On tray (tp), the mold is present but not at center.", "type": "Inoperable Object", "caption": "A mold on the tray (tp) but off-center."},
+            {"description": "On tray (tp), the mold is present but tipped over.", "type": "Inoperable Object", "caption": "A mold tipped over on the tray (tp)."},
+            {"description": "On tray (tp), no mold is present and there is a small liquid spill.", "type": "Missing", "caption": "No mold on the tray (tp) and a small liquid spill."}
+        ]
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "vacuum drying oven (gzx)",
+    "postCheckContent": "Check whether the mold is correctly placed inside vacuum drying oven (gzx).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "Inside vacuum drying oven (gzx), the mold is present and upright.", "caption": "A mold stands upright inside the vacuum drying oven (gzx)."}
+        ],
+        "abnormal": [
+            {"description": "Inside vacuum drying oven (gzx), no mold is present.", "type": "Transformer Failure", "caption": "No mold is present inside the vacuum drying oven (gzx)."},
+            {"description": "Inside vacuum drying oven (gzx), the mold is present but tipped over with liquid spilled.", "type": "Unfulfilled Object", "caption": "A mold tipped over with spilled liquid inside the vacuum drying oven (gzx)."}
+        ]
+    }
+  },
+
+  "step20": {
+    "operator": "central controller",
+    "obj": "vacuum drying oven (gzx)",
+    "start_position": null,
+    "dest_position": null,
+    "subtask": null,
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "vacuum drying oven (gzx)",
+    "postCheckContent": "Check whether the door of vacuum drying oven (gzx) is closed.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "The door of vacuum drying oven (gzx) is closed.", "caption": "The door of the vacuum drying oven (gzx) is closed."}
+        ],
+        "abnormal": [
+            {"description": "The door of vacuum drying oven (gzx) is open.", "type": "Unfulfilled Object", "caption": "The door of the vacuum drying oven (gzx) is open."}
+        ]
+    }
+  },
+
+  "step21": {
+    "operator": "mobile robot arm",
+    "obj": "mold",
+    "start_position": "vacuum drying oven (gzx)",
+    "dest_position": "product station (cpt)",
+    "subtask": "Use the mobile robot arm to move the mold from vacuum drying oven (gzx) to product station (cpt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "vacuum drying oven (gzx)",
+    "preCheckContent": "Check whether the door of vacuum drying oven (gzx) is open and the mold is inside.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "Inside vacuum drying oven (gzx), the mold is present and upright.", "caption": "A mold stands upright inside the vacuum drying oven (gzx)."}
+        ],
+        "abnormal": [
+            {"description": "The door of vacuum drying oven (gzx) is closed.", "type": "Inoperable Object", "caption": "The door of the vacuum drying oven (gzx) remains closed."},
+            {"description": "Inside vacuum drying oven (gzx), no mold is present.", "type": "Missing", "caption": "No mold is present inside the vacuum drying oven (gzx)."},
+            {"description": "Inside vacuum drying oven (gzx), the mold is present but tipped over with liquid spilled.", "type": "Inoperable Object", "caption": "A mold tipped over with spilled liquid inside the vacuum drying oven (gzx)."}
+        ]   
+    },
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "product station (cpt)",
+    "postCheckContent": "Check whether there is an empty slot on product station (cpt).",
+    "postCheckRes": {
+        "normal": [
+            {"description": "There is one empty slot on product station (cpt).", "caption": "One empty slot on the product station (cpt)."},
+            {"description": "There are two empty slots on product station (cpt).", "caption": "Two empty slots on the product station (cpt)."},
+            {"description": "There are three empty slots on product station (cpt).", "caption": "Three empty slots on the product station (cpt)."}
+        ],
+        "abnormal": [
+            {"description": "No empty slot on product station (cpt).", "type": "Inoperable Object", "caption": "No empty slots on the product station (cpt)."}
+        ]
+    }
+  },
+
+  "step22": {
+    "operator": "mobile robot arm",
+    "obj": "mold",
+    "start_position": "tray (tp) center",
+    "dest_position": "product station (cpt)",
+    "subtask": "Use the mobile robot arm to move the mold from tray (tp) center to product station (cpt).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "tray (tp)",
+    "preCheckContent": "Check whether the mold is correctly placed at tray (tp) center.",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On tray (tp) center, the mold contains uniformly mixed silicone liquid.", "caption": "A mold at the center of the tray (tp) with uniformly mixed silicone liquid."},
+            {"description": "On tray (tp) center, the mold contains uniformly mixed silicone liquid and there is a small spill on tray (tp).", "caption": "A mold at the center of the tray (tp) with uniform silicone liquid and a small spill on the tray."}
+        ],
+        "abnormal": [
+            {"description": "On tray (tp), no mold is present.", "type": "Missing", "caption": "No mold is present on the tray (tp)."},
+            {"description": "On tray (tp), the mold is present but not at center.", "type": "Inoperable Object", "caption": "A mold on the tray (tp) but off-center."},
+            {"description": "On tray (tp), the mold is present but tipped over.", "type": "Inoperable Object", "caption": "A mold tipped over on the tray (tp)."},
+            {"description": "On tray (tp), no mold is present and there is a small liquid spill.", "type": "Missing", "caption": "No mold on the tray (tp) and a small liquid spill."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+
+  "step23": {
+    "operator": "mobile robot arm",
+    "obj": "silicone container",
+    "start_position": "workbench (czt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot arm to move the silicone container from workbench (czt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether two silicone containers are on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), two silicone containers are present.", "caption": "Two silicone containers on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no silicone container is present.", "type": "Missing", "caption": "No silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), only one silicone container is present.", "type": "Missing", "caption": "Only one silicone container on the workbench (czt)."},
+            {"description": "On workbench (czt), a silicone container is tipped over.", "type": "Inoperable Object", "caption": "A silicone container is tipped over on the workbench (czt)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+  "step24": {
+    "operator": "mobile robot arm",
+    "obj": "pigment container",
+    "start_position": "workbench (czt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot arm to pick up the pigment container from workbench (czt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether a pigment container is on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a pigment container is present.", "caption": "A pigment container on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no pigment container is present.", "type": "Missing", "caption": "No pigment container on the workbench (czt)."},
+            {"description": "On workbench (czt), the pigment container is tipped over.", "type": "Inoperable Object", "caption": "The pigment container is tipped over on the workbench (czt)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+
+  "step25": {
+    "operator": "mobile robot arm",
+    "obj": "mold",
+    "start_position": "workbench (czt)",
+    "dest_position": "mobile robot platform (rob_p)",
+    "subtask": "Use the mobile robot arm to pick up the mold from workbench (czt) to mobile robot platform (rob_p).",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera) or fixed robot arm (with camera)",
+    "preCheckLocation": "workbench (czt)",
+    "preCheckContent": "Check whether a mold is on workbench (czt).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On workbench (czt), a mold is present.", "caption": "A mold sits on the workbench (czt)."}
+        ],
+        "abnormal": [
+            {"description": "On workbench (czt), no mold is present.", "type": "Missing", "caption": "No mold is present on the workbench (czt)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+
+  "step26": {
+    "operator": "mobile robot arm",
+    "obj": "test tube",
+    "start_position": "test tube rack 2 (sgj2)",
+    "dest_position": "dispensing device",
+    "subtask": "Use the mobile robot arm to pick up an empty uncapped test tube from test tube rack 2 (sgj2) and move it to dispensing device to draw silicone solution.",
+
+    "preCheckType": "vision inspection",
+    "preCheckDev": "mobile robot arm (with camera)",
+    "preCheckLocation": "test tube rack 2 (sgj2)",
+    "preCheckContent": "Check whether there is an empty uncapped test tube on test tube rack 2 (sgj2).",
+    "preCheckRes": {
+        "normal": [
+            {"description": "On test tube rack 2 (sgj2), an empty uncapped test tube is present.", "caption": "An empty uncapped test tube sits on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), there is one empty uncapped test tube and one capped test tube containing colored liquid.", "caption": "An empty uncapped test tube and a capped test tube with colored liquid on rack 2 (sgj2)."}
+        ],
+        "abnormal": [
+            {"description": "On test tube rack 2 (sgj2), no test tube is present.", "type": "Missing", "caption": "No test tube on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), there is one empty capped test tube.", "type": "Inoperable Object", "caption": "An empty capped test tube on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), there is one capped test tube containing colored liquid.", "type": "Inoperable Object", "caption": "A capped test tube with colored liquid on rack 2 (sgj2)."}
+        ]
+    },
+
+    "postCheckType": null,
+    "postCheckDev": null,
+    "postCheckLocation": null,
+    "postCheckContent": null,
+    "postCheckRes": null
+  },
+
+  "step27": {
+    "operator": "mobile robot arm",
+    "obj": "test tube",
+    "start_position": null,
+    "dest_position": "test tube rack 2 (sgj2)",
+    "subtask": "Use the mobile robot arm to move the test tube from dispensing device to test tube rack 2 (sgj2).",
+
+    "preCheckType": null,
+    "preCheckDev": null,
+    "preCheckLocation": null,
+    "preCheckContent": null,
+    "preCheckRes": null,
+
+    "postCheckType": "vision inspection",
+    "postCheckDev": "mobile robot arm (with camera)",
+    "postCheckLocation": "test tube rack 2 (sgj2)",
+    "postCheckContent": "Check on test tube rack 2 (sgj2) whether there is a uncapped test tube containing transparent liquid with a small amount of colored fluid at the top.",
+    "postCheckRes": {
+        "normal": [
+            {"description": "On test tube rack 2 (sgj2), a uncapped test tube is present and contains transparent liquid with a small amount of colored fluid at the top.", "caption": "An uncapped test tube on rack 2 (sgj2) holding transparent liquid topped with colored fluid."},
+            {"description": "On test tube rack 2 (sgj2), one uncapped test tube contains transparent liquid with a small amount of colored fluid at the top, another capped test tube containis colored liquid.", "caption": "An uncapped test tube with transparent liquid and colored fluid, and a capped test tube with colored liquid on rack 2 (sgj2)."}
+        ],
+        "abnormal": [
+            {"description": "On test tube rack 2 (sgj2), no test tube is present.", "type": "Transformer Failure", "caption": "No test tube on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), an empty capped test tube is present.", "type": "Transformer Failure", "caption": "An empty capped test tube on rack 2 (sgj2)."},
+            {"description": "On test tube rack 2 (sgj2), a capped test tube containing colored liquid is present.", "type": "Transformer Failure", "caption": "A capped test tube with colored liquid on rack 2 (sgj2)."}
+        ]
+    }
+  }
+
+
+
+}
