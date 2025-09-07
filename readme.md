@@ -6,8 +6,13 @@ The `image/` folder contains **1,671 original JPG images** captured during the e
 > 📌 A single image may correspond to **multiple annotation entries** based on different viewpoints, steps, or anomaly conditions.
 
 ---
+### 2. `data/mask_groundtruth/` Folder
+Ground-truth masks are generated directly from the annotated regions of interest.
 
-### 2. `data/annotation/` Folder
+
+
+---
+### 3. `data/annotation/` Folder
 
 The `annotation/annotation.json` file contains all structured annotations for the dataset.  
 Each entry corresponds to a specific inspection instance and includes both contextual and visual anomaly information.
@@ -38,16 +43,21 @@ Below is an explanation of each field in the annotation records:
 | `Grounding[].text_span`  | A label for the annotated region (e.g., `"Abnormal region""Normal region""test tube""silicone container"`).                   |
 | `Grounding[].bbox`       | Bounding box coordinates for the region of interest or object `[xmin, ymin, xmax, ymax]`.                                    |
 | `Grounding[].category`   | The anomaly category or object for the bounding box (same as `Anomaly_Type`or`object`).             |
+| `conversation`            |  ground-truth dialogues in a human-prompt/GPT-answer style.  Use for VQA benchmark.      |
+
 
 ---
 
-### 3. `data/glossary.json`: Vocabulary Glossary
+
+---
+
+### 4. `data/glossary.json`: Vocabulary Glossary
 
 The `glossary.json` file provides standardized definitions of terms used throughout the annotation files. It ensures consistent semantic labeling across the dataset by unifying the vocabulary for objects, positions, and device names.
 
 ---
 
-### 4. `data/metasteps.json`: Meta-step Descriptions
+### 5. `data/metasteps.json`: Meta-step Descriptions
 
 The `metasteps.json` file contains the high-level definition of each of the 27 meta-steps defined prior to data acquisition. Each meta-step specifies:
 
@@ -72,7 +82,7 @@ This file provides the contextual backbone for interpreting image-text annotatio
 
 ---
 
-### 5. `vad/` Folder: Context-Aware Visual Anomaly Detection and Evaluation Code
+### 6. `vad/` Folder: Context-Aware Visual Anomaly Detection and Evaluation Code
 
 The `vad` directory contains implementation code for context-aware visual anomaly detection (VAD). It supports:
 
@@ -84,7 +94,7 @@ The `vad` directory contains implementation code for context-aware visual anomal
 This code enables users to benchmark different visual-language models on the dataset and to reproduce detection experiments with customizable settings.
 
 ---
-### 6. `scripts/` Folder: Annotation Pipeline and Analysis Tools
+### 7. `scripts/` Folder: Annotation Pipeline and Analysis Tools
 
 The `scripts` directory contains:
 
@@ -94,3 +104,38 @@ The `scripts` directory contains:
 
 These tools support efficient dataset construction, validation, and downstream performance benchmarking.
 
+---
+### 8. `cls/` Folder: good/bad split
+In line with common practice (e.g., VisA\MVTec), we offer an explicit “good” and “bad” partition of the datasets, and ground-truth masks are generated directly from the annotated regions of interest.
+
+
+---
+
+---
+
+
+## Experimental protocols with anomaly detection
+
+ (i) Zero-shot (ZS–All): no parameter learning; evaluate across all viewpoints and distances using textual prompts only, reporting per-view/per-distance metrics and macro/micro averages. 
+
+(ii) Few-shot (FS–k): for each condition, use a very small labeled set (e.g., k=1k=1k=1 or 555 positives and negatives) for threshold/prompt calibration without weight updates; evaluate on the remainder to quantify minimal, practical gains. 
+
+(iii) Leave-One-View-Out (LOVO, distance-agnostic): for each view, calibrate on the other 13 views with Near and Far combined; test on (also combining distances) to assess cross-view generalization while not over-constraining distance. 
+
+(iv) Extreme-View OOD: designate space-limited/rare angles (e.g., right-90 downward, left-90 horizontal, right-90 horizontal) as out-of-distribution test sets; calibrate on conventional views only to stress-test robustness to rare/occluded perspectives. 
+
+For all protocols we report Accuracy, Precision, Recall, and F1. If a probabilistic model is used, AUROC and AUPR can be reported as additional metrics; for segmentation tasks, pixel-level pAUROC and PRO may also be included.
+
+## Some reproduce methods
+### winclip
+one-class：thr=0.500000  Acc=38.26  P=100.00  R=1.08  F1=2.13
+
+### AnomalyCLIP
+thr=0.500000  Acc=62.91  P=63.92  R=96.47  F1=76.89				
+
+### Anomaly-OV
+（without finetune model）Acc=0.38  P=0.80  R=0.04 F1=0.07
+（with lora） Acc=0.38  P=0.77  R=0.05 F1=0.10
+
+### Triad
+Acc=0.46  P=0.62  R=0.40 F1=0.49
