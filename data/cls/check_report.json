@@ -1,0 +1,13 @@
+{
+  "summary": {
+    "good": 1005,
+    "bad": 1669,
+    "masks": 1670
+  },
+  "errors": {},
+  "warnings": {
+    "orphan_mask": [
+      "sd_001165.png"
+    ]
+  }
+}
