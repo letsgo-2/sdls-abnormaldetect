@@ -122,7 +122,7 @@ In line with common practice (e.g., VisA\MVTec), we offer an explicit “good”
 (iv) Extreme-View OOD: designate space-limited/rare angles (e.g., right-90 downward, left-90 horizontal, right-90 horizontal) as out-of-distribution test sets; calibrate on conventional views only to stress-test robustness to rare/occluded perspectives. 
 
 For all protocols we report Accuracy, Precision, Recall, and F1. If a probabilistic model is used, AUROC and AUPR can be reported as additional metrics; for segmentation tasks, pixel-level pAUROC and PRO may also be included.
-
+To directly support VQA-style evaluation, we added a conversation field to annotation.json, constructing ground-truth dialogues in a human-prompt/GPT-answer style. This is also a kind of experimental protocol.
 ## Some reproduce methods
 ### winclip
 one-class：thr=0.500000  Acc=38.26  P=100.00  R=1.08  F1=2.13
