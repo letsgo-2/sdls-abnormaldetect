@@ -116,12 +116,9 @@ In line with common practice (e.g., VisA\MVTec), we offer an explicit “good”
 
 ## Experimental protocols with anomaly detection
 
- (i) Zero-shot (ZS–All): no parameter learning; evaluate across all viewpoints and distances using textual prompts only, reporting per-view/per-distance metrics and macro/micro averages. 
-
-(ii) Few-shot (FS–k): for each condition, use a very small labeled set (e.g., k=1k=1k=1 or 555 positives and negatives) for threshold/prompt calibration without weight updates; evaluate on the remainder to quantify minimal, practical gains. 
-
-(iii) Leave-One-View-Out (LOVO, distance-agnostic): for each view, calibrate on the other 13 views with Near and Far combined; test on (also combining distances) to assess cross-view generalization while not over-constraining distance. 
-
+(i) Zero-shot (ZS–All): no parameter learning; evaluate across all viewpoints and distances using textual prompts only, reporting per-view/per-distance metrics and image-level/pixel-level averages. 
+(ii) Few-shot (FS–k): for each sampling scene, use k(e.g., k=1,2) positive samples per view for model/prompt calibration references; evaluate across all viewpoints and distances to assess the benefits of limited supervision.
+(iii) Leave-One-View-Out (LOVO, distance-agnostic): for each view, calibrate on the other 13 views; assess cross-view generalization.
 (iv) Extreme-View OOD: designate space-limited/rare angles (e.g., right-90 downward, left-90 horizontal, right-90 horizontal) as out-of-distribution test sets; calibrate on conventional views only to stress-test robustness to rare/occluded perspectives. 
 
 For all protocols we report Accuracy, Precision, Recall, and F1. If a probabilistic model is used, AUROC and AUPR can be reported as additional metrics; for segmentation tasks, pixel-level pAUROC and PRO may also be included.
